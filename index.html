@@ -3,60 +3,203 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Daisy - Mascota</title>
+<title>🐾 Daisy - Perfil de mascota</title>
+
 <style>
 *{box-sizing:border-box}
+
 body{
 margin:0;
 font-family:Arial,sans-serif;
-background:#f5f5f5;
-color:#222;
+background:linear-gradient(135deg,#fff7e6,#f3f8ff);
+color:#252525;
 text-align:center;
 }
-.card{
-max-width:420px;
-margin:30px auto;
-padding:25px 20px;
-background:#fff;
-border-radius:20px;
-box-shadow:0 4px 15px #0002;
+
+.container{
+max-width:430px;
+margin:auto;
+padding:20px 15px 35px;
 }
-img{
-width:170px;
-height:170px;
+
+.alert{
+background:#222;
+color:#fff;
+padding:12px 18px;
+border-radius:30px;
+font-size:15px;
+font-weight:bold;
+display:inline-block;
+margin:10px 0 20px;
+}
+
+.photo{
+width:190px;
+height:190px;
 object-fit:cover;
 border-radius:50%;
-border:4px solid #222;
+border:7px solid white;
+box-shadow:0 8px 25px #0003;
 }
-h1{margin:18px 0 8px;font-size:30px}
-.info{font-size:17px;margin-bottom:25px}
+
+h1{
+font-size:36px;
+margin:18px 0 5px;
+}
+
+.subtitle{
+font-size:17px;
+color:#666;
+margin-bottom:25px;
+}
+
+.message{
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 5px 20px #00000012;
+margin-bottom:18px;
+font-size:16px;
+line-height:1.5;
+}
+
+.message strong{
+font-size:19px;
+}
+
+.info{
+background:white;
+border-radius:20px;
+padding:18px;
+margin-bottom:18px;
+box-shadow:0 5px 20px #00000012;
+text-align:left;
+}
+
+.info-title{
+font-size:18px;
+font-weight:bold;
+margin-bottom:12px;
+}
+
+.row{
+padding:9px 0;
+border-bottom:1px solid #eee;
+}
+
+.row:last-child{
+border-bottom:0;
+}
+
+.label{
+color:#777;
+font-size:13px;
+}
+
+.value{
+font-weight:bold;
+font-size:16px;
+margin-top:2px;
+}
+
 .whatsapp{
 display:block;
-padding:15px;
 background:#25D366;
 color:white;
 text-decoration:none;
+padding:17px;
+border-radius:15px;
+font-size:19px;
 font-weight:bold;
-font-size:18px;
-border-radius:12px;
+box-shadow:0 6px 15px #25d36655;
+margin-top:10px;
+transition:.2s;
 }
+
+.whatsapp:active{
+transform:scale(.97);
+}
+
+.footer{
+margin-top:22px;
+font-size:13px;
+color:#888;
+}
+
+.paw{
+font-size:22px;
+}
+
 </style>
 </head>
+
 <body>
 
-<div class="card">
-<img src="tugato.jpg" alt="Daisy">
+<div class="container">
 
-<h1>🐾 Daisy</h1>
+<div class="alert">
+🐾 ¡ENCONTRASTE A DAISY!
+</div>
+
+<br>
+
+<img class="photo" src="tugato.jpg" alt="Daisy">
+
+<h1>Daisy 🐱</h1>
+
+<div class="subtitle">
+Este es mi perfil de identificación
+</div>
+
+<div class="message">
+<strong>¡Hola! 👋</strong><br><br>
+Si estás viendo esta página, probablemente encontraste a Daisy.
+¡Muchas gracias por ayudarla! ❤️
+<br><br>
+Por favor, contactá a su dueño utilizando el botón de abajo.
+</div>
 
 <div class="info">
-<p><strong>Dueño:</strong> Matías Colman</p>
+
+<div class="info-title">
+🐾 Información de Daisy
+</div>
+
+<div class="row">
+<div class="label">Nombre</div>
+<div class="value">Daisy</div>
+</div>
+
+<div class="row">
+<div class="label">Especie</div>
+<div class="value">🐱 Gata</div>
+</div>
+
+</div>
+
+<div class="info">
+
+<div class="info-title">
+👤 Información de contacto
+</div>
+
+<div class="row">
+<div class="label">Dueño</div>
+<div class="value">Matías Colman</div>
 </div>
 
 <a class="whatsapp"
 href="https://wa.me/543834788463?text=Hola%2C%20encontr%C3%A9%20a%20Daisy">
-💬 Contactar por WhatsApp
+💬 Avisar que encontré a Daisy
 </a>
+
+</div>
+
+<div class="footer">
+🐾 Gracias por ayudar a Daisy a volver a casa ❤️
+<br><br>
+Identificación mediante NFC
+</div>
 
 </div>
 
