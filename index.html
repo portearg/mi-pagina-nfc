@@ -1,207 +1,457 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>🐾 Daisy - Perfil de mascota</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f2f7">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Encontraste a Daisy 🐾</title>
 
-<style>
-*{box-sizing:border-box}
+  <style>
+    :root {
+      --ink: #27242a;
+      --muted: #77727b;
+      --glass: rgba(255,255,255,.50);
+      --glass-strong: rgba(155,155,155,.68);
+      --stroke: rgba(255,255,255,.78);
+      --shadow: rgba(76,57,72,.14);
+      --pink: #f08a9a;
+      --pink-soft: #ffdbe1;
+      --wa: #25D366;
+      --wa-dark: #1db954;
+    }
 
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#fff7e6,#f3f8ff);
-color:#252525;
-text-align:center;
+    * { box-sizing: border-box; }
+
+    html {
+      min-height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                   "SF Pro Text", "Segoe UI", sans-serif;
+
+  background: url(https://portearg.github.io/mi-pagina-nfc/tugato.jpg) center;
+  background-size: cover;
+      overflow-x: hidden;
+    }
+
+.wrap{
+  /* background-color: #fff; */
+  padding: 2rem 3rem;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0px 0px 25px #222;
+  backdrop-filter: blur(10px);
 }
 
-.container{
-max-width:430px;
-margin:auto;
-padding:20px 15px 35px;
-}
+    .page {
+      width: min(100%, 560px);
+      margin: 0 auto;
+      padding: max(22px, env(safe-area-inset-top)) 16px
+               max(34px, env(safe-area-inset-bottom)) 22px;
+    }
 
-.alert{
-background:#222;
-color:#fff;
-padding:12px 18px;
-border-radius:30px;
-font-size:15px;
-font-weight:bold;
-display:inline-block;
-margin:10px 0 20px;
-}
+    .glass-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--stroke);
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.72),
+        rgba(255,255,255,.38)
+      );
+      backdrop-filter: blur(28px) saturate(150%);
+      -webkit-backdrop-filter: blur(28px) saturate(150%);
+      box-shadow:
+        0 24px 70px var(--shadow),
+        inset 0 1px 0 rgba(255,255,255,.95),
+        inset 0 -1px 0 rgba(255,255,255,.30);
+    }
 
-.photo{
-width:190px;
-height:190px;
-object-fit:cover;
-border-radius:50%;
-border:7px solid white;
-box-shadow:0 8px 25px #0003;
-}
+    .glass-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          120deg,
+          rgba(255,255,255,.42),
+          transparent 28%,
+          transparent 68%,
+          rgba(255,255,255,.18)
+        );
+    }
 
-h1{
-font-size:36px;
-margin:18px 0 5px;
-}
+    .main {
+      border-radius: 38px;
+    }
 
-.subtitle{
-font-size:17px;
-color:#666;
-margin-bottom:25px;
-}
+    .hero {
+      position: relative;
+      padding: 27px 22px 24px;
+      text-align: center;
+    }
 
-.message{
-background:white;
-padding:20px;
-border-radius:20px;
-box-shadow:0 5px 20px #00000012;
-margin-bottom:18px;
-font-size:16px;
-line-height:1.5;
-}
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 21px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      color: #6d6269;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .15px;
+      background: rgba(255,255,255,.42);
+      border: 1px solid rgba(255,255,255,.78);
+      box-shadow:
+        0 6px 18px rgba(70,50,65,.07),
+        inset 0 1px 0 rgba(255,255,255,.9);
+    }
 
-.message strong{
-font-size:19px;
-}
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #59c987;
+      box-shadow: 0 0 0 4px rgba(89,201,135,.13);
+    }
 
-.info{
-background:white;
-border-radius:20px;
-padding:18px;
-margin-bottom:18px;
-box-shadow:0 5px 20px #00000012;
-text-align:left;
-}
+    .photo-shell {
+      position: relative;
+      width: 184px;
+      height: 184px;
+      margin: 0 auto 22px;
+      padding: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.40);
+      border: 1px solid rgba(255,255,255,.86);
+      box-shadow:
+        0 20px 42px rgba(83,55,70,.16),
+        inset 0 2px 0 rgba(255,255,255,.92);
+    }
 
-.info-title{
-font-size:18px;
-font-weight:bold;
-margin-bottom:12px;
-}
+    .photo-shell::after {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 25px;
+      width: 55px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.42);
+      transform: rotate(-28deg);
+      filter: blur(5px);
+      pointer-events: none;
+    }
 
-.row{
-padding:9px 0;
-border-bottom:1px solid #eee;
-}
+    .photo {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 50%;
+      background: #eee7e9;
+    }
 
-.row:last-child{
-border-bottom:0;
-}
+    h1 {
+      position: relative;
+      margin: 0;
+      font-size: clamp(28px, 7.5vw, 40px);
+      line-height: 1.03;
+      letter-spacing: -1.7px;
+      font-weight: 850;
+      color: black;
+    }
 
-.label{
-color:#777;
-font-size:13px;
-}
+    .hello {
+      position: relative;
+      margin: 11px 0 6px;
+      font-size: 19px;
+      font-weight: 750;
+      color: black;
+    }
 
-.value{
-font-weight:bold;
-font-size:16px;
-margin-top:2px;
-}
+    .intro {
+      position: relative;
+      max-width: 430px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.58;
+      color: black;
+    }
 
-.whatsapp{
-display:block;
-background:#25D366;
-color:white;
-text-decoration:none;
-padding:17px;
-border-radius:15px;
-font-size:19px;
-font-weight:bold;
-box-shadow:0 6px 15px #25d36655;
-margin-top:10px;
-transition:.2s;
-}
+    .whatsapp {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      min-height: 59px;
+      margin-top: 22px;
+      padding: 15px 18px;
+      border-radius: 19px;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 800;
+      background:
+        linear-gradient(145deg, rgba(49,220,111,.98), rgba(26,181,82,.98));
+      border: 1px solid rgba(255,255,255,.55);
+      box-shadow:
+        0 14px 30px rgba(37,211,102,.25),
+        inset 0 1px 0 rgba(255,255,255,.45);
+      transition: transform .2s ease, box-shadow .2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-.whatsapp:active{
-transform:scale(.97);
-}
+    .whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 18px 35px rgba(37,211,102,.30),
+        inset 0 1px 0 rgba(255,255,255,.55);
+    }
 
-.footer{
-margin-top:22px;
-font-size:13px;
-color:#888;
-}
+    .whatsapp:active {
+      transform: scale(.985);
+    }
 
-.paw{
-font-size:22px;
-}
+    .whatsapp svg {
+      width: 23px;
+      height: 23px;
+      fill: currentColor;
+      flex: 0 0 auto;
+    }
 
-</style>
+    .fast-note {
+      position: relative;
+      margin-top: 9px;
+      color: black;
+      font-size: 11.5px;
+    }
+
+    .details {
+      position: relative;
+      padding: 0 20px 25px;
+    }
+
+    .section {
+      padding-top: 20px;
+      margin-top: 2px;
+      border-top: 1px solid rgba(255,255,255,.72);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 12px;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -.15px;
+      color: black;
+    }
+
+    .info-card {
+      display: grid;
+      gap: 8px;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 55px;
+      padding: 11px 15px;
+      border-radius: 17px;
+      background: rgba(255,255,255,.37);
+      border: 1px solid rgba(255,255,255,.70);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.66),
+        0 6px 18px rgba(70,50,65,.035);
+    }
+
+    .label {
+      color: #817980;
+      font-size: 12.5px;
+    }
+
+    .value {
+      color: #373138;
+      text-align: right;
+      font-size: 14px;
+      font-weight: 760;
+    }
+
+    .owner {
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,.52),
+        rgba(255,239,243,.48)
+      );
+    }
+
+    .thanks {
+      margin: 22px 0 0;
+      text-align: center;
+      color: black;
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    .nfc {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 17px;
+      color: black;
+      font-size: 10.5px;
+      letter-spacing: .3px;
+    }
+
+    .nfc-icon {
+      width: 15px;
+      height: 15px;
+      opacity: .65;
+    }
+
+    @media (max-width: 390px) {
+      .page { padding-left: 12px; padding-right: 12px; }
+      .hero { padding-left: 18px; padding-right: 18px; }
+      .details { padding-left: 16px; padding-right: 16px; }
+      .photo-shell { width: 158px; height: 158px; }
+      .main { border-radius: 31px; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .main {
+        animation: appear .65s cubic-bezier(.2,.8,.2,1) both;
+      }
+      @keyframes appear {
+        from { opacity: 0; transform: translateY(12px) scale(.985); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+    }
+  </style>
 </head>
 
-<body>
+<body class="wrap">
+  <main class="page">
+    <div class="glass-card main">
 
-<div class="container">
+      <section class="hero">
 
-<div class="alert">
-🐾 ¡ENCONTRASTE A DAISY!
-</div>
+        <div class="photo-shell">
+          <img
+            class="photo"
+            src="https://portearg.github.io/mi-pagina-nfc/tugato.jpg"
+            alt="Daisy, gata"
+          >
+        </div>
 
+        <h1>🐾 ¡ENCONTRASTE A DAISY!</h1>
+
+        <p class="hello">¡Hola! 👋</p>
+
+        <p class="intro">
+          Si estás viendo esta página, encontraste a Daisy.
+          ¡Muchas gracias por ayudarla! ❤️
+        </p>
+
+        <!-- WhatsApp: contacto prioritario -->
+        <a
+          class="whatsapp"
+          href="https://wa.me/543834788463?text=Hola%2C%20encontr%C3%A9%20a%20Daisy"
+          aria-label="Avisar que encontré a Daisy por WhatsApp"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.53 0 .2 5.33.2 11.88c0 2.09.55 4.14 1.59 5.94L.1 24l6.33-1.66a11.84 11.84 0 0 0 5.65 1.43h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.15-3.45-8.41Zm-8.44 18.25h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.76.99 1-3.66-.23-.38a9.85 9.85 0 1 1 8.39 4.64Zm5.41-7.39c-.3-.15-1.78-.88-2.05-.98-.27-.1-.47-.15-.67.15-.2.3-.77.98-.94 1.18-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.47-1.76-1.64-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.91-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.5 1.7.64.72.23 1.37.2 1.89.12.58-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.17-1.43-.07-.12-.27-.2-.57-.35Z"/>
+          </svg>
+          Avisar que encontré a Daisy
+        </a>
+
+        <div class="fast-note">
+          Se abrirá WhatsApp para avisar al dueño directamente.
+        </div>
+      </section>
+
+      <section class="details">
+
+        <div class="section">
+          <h2 class="section-title">🐾 Información de Daisy</h2>
+
+          <div class="info-card">
+            <div class="info-row">
+              <span class="label">Nombre</span>
+              <span class="value">Daisy</span>
+            </div>
+
+            <div class="info-row">
+              <span class="label">Especie</span>
+              <span class="value">🐱 Gata</span>
+            </div>
+            <div class="info-row">
+              <span class="label">Colores</span>
+              <span class="value">Blanco y negro</span>
+            </div>
+          </div>
+        </div>
 <br>
+        <div class="section">
+          <h2 class="section-title">👤 Información de contacto</h2>
 
-<img class="photo" src="tugato.jpg" alt="Daisy">
+          <div class="info-card">
+            <div class="info-row">
+              <span class="label">Dueño</span>
+              <span class="value">Matías</span>
+            </div>
 
-<h1>Daisy 🐱</h1>
+            <div class="info-row">
+              <span class="label">Número de contacto</span>
+              <span class="value">+54 9 123-123-123</span>
+            </div>
+            <div class="info-row">
+              <span class="label">Dirección</span>
+              <span class="value">España 100, Rosario, Santa Fe</span>
+            </div>
+          </div>
+        </div>
 
-<div class="subtitle">
-Este es mi perfil de identificación
-</div>
+        <p class="thanks">
+          🐾 Gracias por ayudar a Daisy a volver a casa ❤️
+        </p>
 
-<div class="message">
-<strong>¡Hola! 👋</strong><br><br>
-Si estás viendo esta página, probablemente encontraste a Daisy.
-¡Muchas gracias por ayudarla! ❤️
-<br><br>
-Por favor, contactá a su dueño utilizando el botón de abajo.
-</div>
+        <div class="nfc">
+          <svg class="nfc-icon" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.7"
+               stroke-linecap="round">
+            <path d="M7.5 8.5a5 5 0 0 0 0 7"/>
+            <path d="M10.5 6a8.5 8.5 0 0 0 0 12"/>
+            <path d="M13.5 4a11.5 11.5 0 0 0 0 16"/>
+            <circle cx="17.8" cy="12" r="1.2" fill="currentColor" stroke="none"/>
+          </svg>
+          Identificación mediante NFC
+        </div>
+        <br>
+      <a href="https://wa.me/543834788463?text=Hola%2C%20quiero%20una%20placa%20NFC%20para%20mi%20mascota!"><div class="status-pill">
+          <span class="status-dot"></span>
+          Obtener una identificación NFC
+        </div></a>
 
-<div class="info">
-
-<div class="info-title">
-🐾 Información de Daisy
-</div>
-
-<div class="row">
-<div class="label">Nombre</div>
-<div class="value">Daisy</div>
-</div>
-
-<div class="row">
-<div class="label">Especie</div>
-<div class="value">🐱 Gata</div>
-</div>
-
-</div>
-
-<div class="info">
-
-<div class="info-title">
-👤 Información de contacto
-</div>
-
-<div class="row">
-<div class="label">Dueño</div>
-<div class="value">Matías Colman</div>
-</div>
-
-<a class="whatsapp"
-href="https://wa.me/543834788463?text=Hola%2C%20encontr%C3%A9%20a%20Daisy">
-💬 Avisar que encontré a Daisy
-</a>
-
-</div>
-
-<div class="footer">
-🐾 Gracias por ayudar a Daisy a volver a casa ❤️
-<br><br>
-Identificación mediante NFC
-</div>
-
-</div>
-
+      </section>
+    </div>
+  </main>
 </body>
 </html>
